@@ -1,89 +1,163 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>JavaScript Tasks</title>
-    <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-            margin-top: 50px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Website</title>
 
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: blue;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-        .calc-box {
-            margin-top: 40px;
-        }
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #333;
+  color: white;
+  padding: 15px 20px;
+  position: relative;
+}
 
-        input {
-            padding: 10px;
-            width: 100px;
-            margin: 5px;
-        }
-    </style>
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+/* HAMBURGER */
+.menu-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* ================= HEADER ================= */
+.header {
+  text-align: center;
+  padding: 40px;
+  background: #666;
+  color: white;
+}
+
+/* ================= CONTENT ================= */
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.box {
+  flex: 1;
+  padding: 60px;
+  background: lightblue;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+
+  /* Hamburger visible */
+  .hamburger {
+    display: block;
+  }
+
+  /* Hide menu */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #333;
+    position: absolute;
+    top: 60px;
+    left: 0;
+  }
+
+  .nav-links li {
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  /* Toggle menu */
+  .menu-toggle:checked ~ .nav-links {
+    display: flex;
+  }
+
+  /* Stack boxes */
+  .container {
+    flex-direction: column;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .header {
+    font-size: 18px;
+  }
+
+  .box {
+    padding: 30px;
+    background: lightcoral;
+  }
+}
+
+</style>
 </head>
+
 <body>
 
-    <h1>JavaScript Level 1 Tasks</h1>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">My Website</div>
 
-    <!-- ✅ Task 1: Button Color Change -->
-    <h2>1. Button Color Change</h2>
-    <button onclick="changeColor()" id="colorBtn">Click Me</button>
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+  <label for="menu-toggle" class="hamburger">&#9776;</label>
 
-    <!-- ✅ Task 2: Greeting Alert -->
-    <h2>2. Greeting Message</h2>
-    <button onclick="showGreeting()">Show Greeting</button>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
 
-    <!-- ✅ Task 3: Simple Calculator -->
-    <div class="calc-box">
-        <h2>3. Simple Calculator</h2>
-        <input type="number" id="num1" placeholder="Number 1">
-        <input type="number" id="num2" placeholder="Number 2"><br><br>
-        <button onclick="addNumbers()">Add</button>
-        <p id="result"></p>
-    </div>
+<!-- HEADER -->
+<div class="header">
+  <h1>Responsive Webpage</h1>
+  <p>This layout adjusts for mobile, tablet, and desktop</p>
+</div>
 
-    <script>
-        // Task 1: Change button color
-        function changeColor() {
-            let btn = document.getElementById("colorBtn");
-            btn.style.backgroundColor = "red";
-        }
-
-        // Task 2: Greeting based on time
-        function showGreeting() {
-            let hour = new Date().getHours();
-            let message;
-
-            if (hour < 12) {
-                message = "Good Morning!";
-            } else if (hour < 18) {
-                message = "Good Afternoon!";
-            } else {
-                message = "Good Evening!";
-            }
-
-            alert(message);
-        }
-
-        // Task 3: Add two numbers
-        function addNumbers() {
-            let n1 = Number(document.getElementById("num1").value);
-            let n2 = Number(document.getElementById("num2").value);
-
-            let sum = n1 + n2;
-
-            document.getElementById("result").innerText = "Result: " + sum;
-        }
-    </script>
+<!-- CONTENT -->
+<div class="container">
+  <div class="box">Box 1</div>
+  <div class="box">Box 2</div>
+  <div class="box">Box 3</div>
+</div>
 
 </body>
 </html>
